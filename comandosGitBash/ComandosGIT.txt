@@ -1,0 +1,37 @@
+BLOB
+echo '"string"' | git hash-object --stdin = para dizer que iremos passar um arquivo de texto (gera resultados diferentes)
+echo -e '"string"' | openssl sha1 = cryptografia em 40 caracteres do git para proteção de dados (gera resultados diferentes)
+	'blob 9\0"string"' (gero o mesmo resultado do git)
+
+openssl sha1 "nome do arquivo" = cyptografa um arquivo inteiro
+
+TREE = guarda todos os BLOBs (caso os metadados mudem em um BLOB, também mudará o da TREE)
+COMMIT = guardas todas as TREE, parentes (arquivos antigos), mensagens, autor, timestamp (quando foi gerado) e etc
+
+ssh-keygen -t ed25519 "seu email" = criar uma chave SSH
+eval $(ssh-agent -s) = inicia o processo
+cat id_ed25519.pub = mostra a chave pública
+ssh-add id_ed25519 = usa nossa chave privada para descryptografar 
+pwd = mostra o caminho até o repositório onde você está
+ls = lista os arquivos de um repositório
+ls -a = mostra arquivos ocultos também
+mkdir "nome do diretório" - criar um novo repositório
+
+git clone "caminho do repositório" = clona um repositório do github
+
+git init = iniciar repositório
+git add * = salvar todos os arquivos
+git add "nome dos arquivos modificados" = mesma função anterior mas mais precisa
+git restore --staged "nome do arquivo" = serve para desfazer a ação do git add
+git commit -m "string" = criar commit
+git config --global user.email "seu email" = referencia seu email no git
+git config --global user.name "string" = referencia seu apelido no git
+git status = mostra os status atual do repositório
+git config --list = traz uma lista de todas as configurações do seu git (use Q para sair)
+git config --global --unset "nome de alguma config" = para resetar alguma configuração indesejada
+mv "nome de um arquivo" ./"nome do repositório"/ = move o arquivo de um repositório para outro
+
+git remote add origin "URL do seu repositório no github" = relaciona o repositorio local com o remoto
+git remote -v = faz o teste de funcionalidade do repositório remoto
+git push origin master = usado para enviar o repositoório do local para o remoto
+git pull origin master = usado para baixar o repositório mais recente e tentar juntar os dois para corrigir possíveis erros no comando anterior
